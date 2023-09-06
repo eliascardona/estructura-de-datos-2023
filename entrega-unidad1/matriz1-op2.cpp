@@ -72,17 +72,11 @@ void llenadoDeMatriz(int matriz[][COL]) {
 
 
 void intercambiarFilas(int matriz[][COL], int i, int j) {
-    int k=0, temp=0;
-    if(i>=0 && j>=0 && i<ROW && j<ROW) {
-        for(k=0; k<COL; k++) {
-            temp = matriz[i][k];
-            matriz[i][k] = matriz[j][k];
-            matriz[j][k] = temp;
-        }
-    } else {
-        cout<<"Los numeros de fila que ingreso, no son validos"<<endl;
-    }
-
+	for(int i=0; i<ROW; i++) {
+		if(iRow>= 0&& iRow<ROW && jRow>=0 && jRow<COL) {
+			matriz[i][jRow] = matriz[iRow][i];
+		}
+	}
 }
 
 
