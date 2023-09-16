@@ -17,6 +17,7 @@ int FRENTE = -1;
 void enlistar();
 void delistar();
 void mostrar();
+void vaciar();
 void opciones();
 
 
@@ -47,6 +48,7 @@ main() {
 			system("cls");
 
 			case 4: {
+				vaciar();
 				exit(0);
 			}
 
@@ -99,6 +101,15 @@ void mostrar() {
 		cout<<"]";
 		cout<<"===================="<<endl<<endl;
 	}
+}
+
+
+void vaciar() {
+	FRENTE == -1;
+	FINAL == -1;
+	cout<<endl<<"===================="<<endl<<endl;
+	cout<<endl<<"===================="<<endl<<endl;
+	cout<<"Lista vacia"<<endl<<endl;
 }
 
 
