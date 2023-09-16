@@ -1,4 +1,6 @@
 // Elias Eduardo Cardona Rodríguez
+// David Rodríguez Villagran
+// Kenia Jocelyn Martínez Gutierrez
 // Licenciatura en Informática 3-A
 // 03-SEP-2023
 //

@@ -1,4 +1,6 @@
 // Elias Eduardo Cardona Rodríguez
+// David Rodríguez Villagran
+// Kenia Jocelyn Martínez Gutierrez
 // Licenciatura en Informática 3-A
 // 03-SEP-2023
 //
@@ -14,13 +16,19 @@ using namespace std;
 
 
 void llenadoDeMatriz(int matriz[][COL]);
-void intercambiarFilas(int matriz[][COL], int i, int j);
+void intercambiarFilas(int matriz[][COL], int iRow, int jRow);
 
 
 int main() {
     int A[ROW][COL]={};
 	int iRow=0, jRow=0;
 
+	// Para un mejor orden en nuestra función main,
+	// utilizamos un procedimiento para para el llenado de nuestra
+	// matriz. Nótese como se le pasa la matriz declarada en main como
+	// parámetro, para posteriormente pasarle esta matriz ya con valores
+	// a cualquier otra función o procedimiento.
+	//
 	llenadoDeMatriz(A);
 
     cout<<endl<<"Matriz original:"<<endl;
@@ -43,6 +51,8 @@ int main() {
 
     intercambiarFilas(A, iRow, jRow);
 
+
+	// Aquí simplemente se realiza la impresión de nuestra matriz
     cout<<"Matriz despues del intercambio de filas:"<<endl;
     for(int i=0; i<ROW; i++) {
         for(int j=0; j<COL; j++)
@@ -57,6 +67,9 @@ int main() {
 }
 
 
+
+// Procedimiento para el llenado de nuestra matriz
+// se utiliza un método convencional, con el uso de ciclos for.
 void llenadoDeMatriz(int matriz[][COL]) {
 	int i=0, j=0;
     cout<<"Ingrese los elementos de la matriz:"<<endl;
@@ -71,13 +84,20 @@ void llenadoDeMatriz(int matriz[][COL]) {
 }
 
 
-void intercambiarFilas(int matriz[][COL], int i, int j) {
-	for(int i=0; i<ROW; i++) {
+
+// Implementación de un procedimiento que intercambie
+// la fila seleccionada por la fila destinatario.
+void intercambiarFilas(int matriz[][COL], int iRow, int jRow) {
+	for(int b=0; b<ROW; b++) {
 		if(iRow>= 0&& iRow<ROW && jRow>=0 && jRow<COL) {
-			matriz[i][jRow] = matriz[iRow][i];
+			// Como el requerimiento del programa no lo indica,
+			// sólo intercambiamos la fila `i-esima`, por la `j-esima`
+			matriz[b][jRow] = matriz[iRow][b];
 		}
 	}
 }
+
+
 
 
 
