@@ -17,8 +17,8 @@ int aux[K];
 void push();
 void pop();
 void mostrar();
+void vaciarPila();
 void opciones();
-
 
 
 int main(){
@@ -48,6 +48,7 @@ int main(){
 			system("cls");
 
 			case 4: {
+				vaciarPila();
 				exit(0);
 			}
 
@@ -88,13 +89,24 @@ void mostrar() {
 		cout<<"Pila vacia"<<endl;
 	else {
 		cout<<"--- PILA ---"<<endl;
-        cout<<"===================="<<endl;
+		cout<<"===================="<<endl;
 		for(int i=cima; i>=0; --i)
 			cout<<aux[i]<<endl;
 		// ==========================
-        cout<<"====================";
+		cout<<"====================";
 		cout<<endl<<endl;
 	}
+}
+
+
+void vaciarPila() {
+	cima=-1;
+	cout<<"Pila vacia"<<endl;
+	cout<<"===================="<<endl;
+	for(int i=cima; i>=0; --i)
+			cout<<aux[i]<<endl;
+	// ==========================
+	cout<<"====================";
 }
 
 
