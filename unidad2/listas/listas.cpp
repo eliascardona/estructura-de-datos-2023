@@ -105,8 +105,8 @@ void mostrar() {
 
 
 void vaciar() {
-	FRENTE == -1;
-	FINAL == -1;
+	FRENTE = -1;
+	FINAL = -1;
 	cout<<endl<<"===================="<<endl<<endl;
 	cout<<endl<<"===================="<<endl<<endl;
 	cout<<"Lista vacia"<<endl<<endl;

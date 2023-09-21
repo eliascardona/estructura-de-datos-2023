@@ -22,7 +22,6 @@ void opciones();
 
 
 int main(){
-	//int pila[K]={};
 	int opcion=100;
     cout<<"------ Trabajando con pila ------"<<endl<<endl;
 
@@ -62,7 +61,7 @@ int main(){
 void push() {
 	int x=0;
 	if(cima == K-1) {
-		cout<<"Stack overflow"<<endl;
+		cout<<"Pila llena"<<endl;
 	} else {
 		cout<<"Coloque un elemento en la pila: "<<endl;
 		cin>>x;
@@ -102,10 +101,8 @@ void mostrar() {
 void vaciarPila() {
 	cima=-1;
 	cout<<"Pila vacia"<<endl;
-	cout<<"===================="<<endl;
-	for(int i=cima; i>=0; --i)
-			cout<<aux[i]<<endl;
-	// ==========================
+	cout<<"===================="<<endl<<endl<<endl;
+
 	cout<<"====================";
 }
 
