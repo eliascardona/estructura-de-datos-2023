@@ -10,7 +10,11 @@
 #include <cstring>
 using namespace std;
 
-int evaluarPrefijo(char *expresion);
+
+int cima = -1;
+void push();
+void pop();
+int evaluarPrefijo(char *pip);
 
 
 int main() {
@@ -28,47 +32,74 @@ int main() {
 }
 
 
+void push() {
+	int x=0;
+	if(cima == K-1) {
+		cout<<"Pila llena"<<endl;
+	} else {
+		cout<<"Coloque un elemento en la pila: "<<endl;
+		cin>>x;
+		// ==========================
+		cima+=1;
+		aux[cima] = x;
+		// ==========================
+	}
+}
 
 
-int evaluarPrefijo(char *expresion) {
+void pop() {
+	if(cima == -1)
+		cout<<"Pila vacia"<<endl;
+	else {
+		cout<<"Elemento eliminado: "<<aux[cima]<<endl;
+		cima-=1;
+	}
+}
+
+
+int evaluarPrefijo(char *pip) {
+	// dirección del PUNTERO
+	cout<<"puntero "<<pip<<"\t"<<"valor "<<*pip<<"\t"<<"variable "<<&pip<<endl<<endl;
+
 	int pila[30];// Pila de gran tamaño para almacenar operandos
-	int top = -1;// Puntero de la parte superior de la pila
 
-	int longitud = strlen(expresion);
+	int b = strlen(pip);
 
-	for(int i = longitud - 1; i >= 0; i--) {
-		if(expresion[i] >= '0' && expresion[i] <= '9') {
+	for(int i=b-1; i>=0; i--) {
+		if(pip[i] >= '0' && pip[i] <= '9') {
 			// Si es un operando, convertir el carácter a entero y apilarlo
-			pila[++top] = expresion[i] - '0';
+			pila[++cima] = pip[i] - '0';
 		} else {
 			// Si es un operador, desapilar dos operandos, realizar la operación y apilar el resultado
-			int operand1 = pila[top--];
-			int operand2 = pila[top--];
+			int operando1 = pila[cima--];
+			int operando2 = pila[cima--];
 
-			switch(expresion[i]) {
+			switch(pip[i]) {
 				case '+':
-		 			pila[++top] = operand1 + operand2;
+		 			pila[++cima] = operando1 + operando2;
 	 			break;
 				//-------------------------------------
 	 			case '-':
-		 			pila[++top] = operand1 - operand2;
+		 			pila[++cima] = operando1 - operando2;
 	 			break;
 				//-------------------------------------
 	 			case '*':
-		 			pila[++top] = operand1 * operand2;
+		 			pila[++cima] = operando1 * operando2;
 	 			break;
 				//-------------------------------------
 	 			case '/':
-		 			pila[++top] = operand1 / operand2;
+		 			pila[++cima] = operando1 / operando2;
 	 			break;
 				//-------------------------------------
 		 		default:
-			 		cout<<"Operador no válido: "<<expresion[i]<<endl;
+			 		cout<<"Operador no válido: "<<pip[i]<<endl;
 				//-------------------------------------
 			}
 		}
 	}
-	return pila[top]; // El resultado final está en la parte superior de la pila
+	cout<<"la cima va en "<<cima<<endl;
+	cout<<"puntero "<<pip<<"\t"<<"valor "<<*pip<<"\t"<<"variable "<<&pip<<endl;
+	return pila[cima]; // El resultado final está en la parte superior de la pila
 }
 
 

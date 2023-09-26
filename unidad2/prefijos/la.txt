@@ -1,0 +1,13 @@
+
+ Imprimir la dirección de memoria del puntero
+cout << "Dirección del puntero: " << ptr << std::endl;
+
+ Imprimir el valor almacenado en la dirección apuntada por el puntero
+cout << "Valor apuntado por el puntero: " << *ptr << std::endl;
+
+ Imprimir la dirección de memoria de la variable que contiene el puntero
+cout << "Dirección de la variable que contiene el puntero: " << &ptr << std::endl;
+
+ Imprimir el tamaño en bytes del puntero
+cout << "Tamaño del puntero: " << sizeof(ptr) << " bytes" << std::endl;
+
