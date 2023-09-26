@@ -9,39 +9,36 @@
 #include <cstdlib>
 #include <cstring>
 using namespace std;
+#define K 30
 
 
 int cima = -1;
-void push();
+int pila[K] = {};
+
+
+void push(int el);
 void pop();
 int evaluarPrefijo(char *pip);
 
 
 int main() {
 	char expresion[] = "+5*42";
+	// ---------------------------------------
 	int resultado = evaluarPrefijo(expresion);
-
-	// ---------------------------------
-	cout<<"Resultado: "<<resultado<<endl;
-
-
-
-
-	cout<<endl<<endl;
+	cout<<"Resultado: "<<resultado<<endl<<endl;
+	// ---------------------------------------
 	return 0;
 }
 
 
-void push() {
-	int x=0;
+void push(int el) {
 	if(cima == K-1) {
 		cout<<"Pila llena"<<endl;
 	} else {
-		cout<<"Coloque un elemento en la pila: "<<endl;
-		cin>>x;
 		// ==========================
 		cima+=1;
-		aux[cima] = x;
+		pila[cima] = el;
+		cout<<endl<<"pushed el --- "<<el<<" ---"<<endl;
 		// ==========================
 	}
 }
@@ -51,44 +48,48 @@ void pop() {
 	if(cima == -1)
 		cout<<"Pila vacia"<<endl;
 	else {
-		cout<<"Elemento eliminado: "<<aux[cima]<<endl;
+		cout<<endl<<"popped el --- "<<pila[cima]<<" ---"<<endl;
 		cima-=1;
 	}
 }
 
 
 int evaluarPrefijo(char *pip) {
-	// dirección del PUNTERO
-	cout<<"puntero "<<pip<<"\t"<<"valor "<<*pip<<"\t"<<"variable "<<&pip<<endl<<endl;
-
-	int pila[30];// Pila de gran tamaño para almacenar operandos
-
 	int b = strlen(pip);
 
 	for(int i=b-1; i>=0; i--) {
 		if(pip[i] >= '0' && pip[i] <= '9') {
 			// Si es un operando, convertir el carácter a entero y apilarlo
-			pila[++cima] = pip[i] - '0';
+			push(pip[i]-'0');
+			cout<<endl<<"--- numero insertado ---"<<endl;
 		} else {
 			// Si es un operador, desapilar dos operandos, realizar la operación y apilar el resultado
 			int operando1 = pila[cima--];
 			int operando2 = pila[cima--];
 
 			switch(pip[i]) {
-				case '+':
-		 			pila[++cima] = operando1 + operando2;
+				case '+': {
+		 			int res1 = operando1 + operando2;
+					push(res1);
+				}
 	 			break;
 				//-------------------------------------
-	 			case '-':
-		 			pila[++cima] = operando1 - operando2;
+	 			case '-': {
+		 			int res2 = operando1 - operando2;
+					push(res2);
+				}
 	 			break;
 				//-------------------------------------
-	 			case '*':
-		 			pila[++cima] = operando1 * operando2;
+	 			case '*':{
+		 			int res3 = operando1 * operando2;
+					push(res3);
+				}
 	 			break;
 				//-------------------------------------
-	 			case '/':
-		 			pila[++cima] = operando1 / operando2;
+	 			case '/': {
+		 			int res4 = operando1 / operando2;
+					push(res4);
+				}
 	 			break;
 				//-------------------------------------
 		 		default:
@@ -97,9 +98,8 @@ int evaluarPrefijo(char *pip) {
 			}
 		}
 	}
-	cout<<"la cima va en "<<cima<<endl;
-	cout<<"puntero "<<pip<<"\t"<<"valor "<<*pip<<"\t"<<"variable "<<&pip<<endl;
-	return pila[cima]; // El resultado final está en la parte superior de la pila
+	// -------------------------------------
+	return pila[cima];
 }
 
 

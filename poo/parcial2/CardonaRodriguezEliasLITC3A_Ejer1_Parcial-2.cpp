@@ -1,6 +1,6 @@
 // Elias Eduardo Cardona Rodríguez
 // Lic. en Informatica 3A
-// Objetivo: Realizar un programa que muestre un menu de opciones con la sentencia if
+// Objetivo: Realizar un menu de opciones con la sentencia switch
 
 // librerias
 #include <iostream>
@@ -23,11 +23,7 @@ int main() {
 	cout<<"Digite el numero de la opcion correspondiente: ";
 	cin>>opcion;
 
-
-	// verificacion de la jerarquía de los valores ingresados
-	// por medio de la estructura de control if,
-	// que comunmente es utilizada para manejar el flujo de la información
-	// dentro del programa, así como para validar condiciones
+	// verificacion de la condición ingresada
 	cout<<endl;
 	switch(opcion) {
 		case 1:
