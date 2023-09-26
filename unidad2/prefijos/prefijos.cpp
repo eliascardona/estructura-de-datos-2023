@@ -17,12 +17,13 @@ int pila[K] = {};
 
 
 void push(int el);
-void pop();
+void pop(int el);
+int priority(char alpha);
 int evaluarPrefijo(char *pip);
 
 
 int main() {
-	char expresion[] = "+5*42";
+	char expresion[] = "*5+22";
 	// ---------------------------------------
 	int resultado = evaluarPrefijo(expresion);
 	cout<<"Resultado: "<<resultado<<endl<<endl;
@@ -35,22 +36,32 @@ void push(int el) {
 	if(cima == K-1) {
 		cout<<"Pila llena"<<endl;
 	} else {
-		// ==========================
 		cima+=1;
 		pila[cima] = el;
 		cout<<endl<<"pushed el --- "<<el<<" ---"<<endl;
-		// ==========================
 	}
 }
 
 
-void pop() {
+void pop(int el) {
 	if(cima == -1)
 		cout<<"Pila vacia"<<endl;
 	else {
-		cout<<endl<<"popped el --- "<<pila[cima]<<" ---"<<endl;
+		cout<<endl<<"popped el --- "<<el<<" ---"<<endl;
 		cima-=1;
 	}
+}
+
+
+int priority(char alpha) {
+	if(alpha == '+' || alpha=='-')
+		return 1;
+	if(alpha == '*' || alpha=='/')
+		return 2;
+	if(alpha == '^')
+		return 3;
+	// -------------------
+	return 0;
 }
 
 
