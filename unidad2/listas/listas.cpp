@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-#define K 5
+#define K 10
 
 
 int aux[K];
@@ -65,7 +65,7 @@ main() {
 void enlistar() {
 	int elemento = 0;
 	if(FINAL == K-1) {
-		cout<<"Overflow"<<endl<<endl;
+		cout<<"LISTA LLENA"<<endl<<endl;
 	} else if(FRENTE == -1) {
 		// ==========================
 		FRENTE = 0;
@@ -76,7 +76,7 @@ void enlistar() {
 		FINAL+=1;
 		aux[FINAL] = elemento;
 		// ==========================
-	} else if(FRENTE > 0) {
+	} else if(FRENTE >= 0) {
 		cout<<"[>0] Coloque un elemento en su lista: ";
 		cin>>elemento;
 		// ==========================
@@ -125,8 +125,8 @@ void vaciar() {
 
 void pintar() {
 	cout<<endl<<"===================="<<endl;
-	cout<<endl<<"FRENTE = "<<FRENTE<<endl;
-	cout<<"FINAL = "<<FINAL<<endl<<endl;
+	cout<<"FRENTE = "<<FRENTE<<endl;
+	cout<<"FINAL = "<<FINAL<<endl;
 	cout<<endl<<"===================="<<endl;
 }
 
