@@ -18,6 +18,7 @@ void enlistar();
 void delistar();
 void mostrar();
 void vaciar();
+void pintar();
 void opciones();
 
 
@@ -33,19 +34,21 @@ main() {
 		switch(opcion) {
 			case 1: {
 				enlistar();
-				break;
+				pintar();
 			}
+			break;
 
 			case 2: {
 				delistar();
-				break;
+				pintar();
 			}
+			break;
 
 			case 3: {
 				mostrar();
-				break;
+				pintar();
 			}
-			system("cls");
+			break;
 
 			case 4: {
 				vaciar();
@@ -73,6 +76,13 @@ void enlistar() {
 		FINAL+=1;
 		aux[FINAL] = elemento;
 		// ==========================
+	} else if(FRENTE > 0) {
+		cout<<"[>0] Coloque un elemento en su lista: ";
+		cin>>elemento;
+		// ==========================
+		FINAL+=1;
+		aux[FINAL] = elemento;
+		// ==========================
 	}
 }
 
@@ -89,16 +99,16 @@ void delistar() {
  
 
 void mostrar() {
-	if(FRENTE== - 1) {
+	if(FRENTE == - 1) {
 		cout<<"Lista vacia"<<endl;
 	} else {
 		cout<<"--- LISTA ---"<<endl;
-		cout<<"===================="<<endl;
+		cout<<endl<<"===================="<<endl;
 		cout<<"[";
 		for(int i=FRENTE; i<=FINAL; i++)
 			cout<<aux[i]<<",  ";
 		// ==========================
-		cout<<"]";
+		cout<<"]"<<endl;
 		cout<<"===================="<<endl<<endl;
 	}
 }
@@ -110,6 +120,14 @@ void vaciar() {
 	cout<<endl<<"===================="<<endl<<endl;
 	cout<<endl<<"===================="<<endl<<endl;
 	cout<<"Lista vacia"<<endl<<endl;
+}
+
+
+void pintar() {
+	cout<<endl<<"===================="<<endl;
+	cout<<endl<<"FRENTE = "<<FRENTE<<endl;
+	cout<<"FINAL = "<<FINAL<<endl<<endl;
+	cout<<endl<<"===================="<<endl;
 }
 
 
