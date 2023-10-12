@@ -51,7 +51,7 @@ int ops() {
 
 int main() {
 	// objetivo principal del programa
-	cout<<"CALCULADORA BASICA EN C++"<<endl;
+	cout<<"CALCULADORA DE TIPOS DE CAMBIO"<<endl;
 
 	while(1) {
 		int opcion = ops();
