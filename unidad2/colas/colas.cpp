@@ -58,7 +58,7 @@ main() {
             default:
 	            cout<<"Opcion no valida"<<endl;
         } 
-    } 
+    }
 }
 
 
