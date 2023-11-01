@@ -22,12 +22,22 @@ class Persona {
 		estatura = et;
 	}
 
-	// Método para mostrar el tiempo
+	// Método para mostrar los atributos de la clase
 	void mostrar() {
 		cout<<nombre<<"tiene "<<edad<<" anios. Pesa "<<peso<<" kg, mide "<<estatura<<" cm."<<endl;
 	}
 
+	void correr() {
+		cout<<nombre<<" esta corriendo en el parque"<<endl;
+	}
 
+	void comer() {
+		cout<<nombre<<" esta comiendo un plato de vegetales"<<endl;
+	}
+
+	void jugar() {
+		cout<<nombre<<" esta jugando en el patio de la escuela"<<endl;
+	}
 };
 
 
@@ -43,8 +53,10 @@ int main() {
 	//
 
 	estudiante1.mostrar();
-	estudiante2.mostrar();
-	estudiante3.mostrar();
+	estudiante1.comer();
+
+	estudiante2.correr();
+	estudiante3.jugar();
 
 	cout<<endl;
 	return 0;

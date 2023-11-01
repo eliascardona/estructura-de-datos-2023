@@ -1,6 +1,6 @@
 // Elias Eduardo Cardona Rodríguez
 // Licenciatura en Informática 3-A
-// 28-OCT-2023
+// 01-NOV-2023
 // UNIDAD 3
 // Implementación de listas simples.
 // Utilizando punteros y memoria dinámica.
