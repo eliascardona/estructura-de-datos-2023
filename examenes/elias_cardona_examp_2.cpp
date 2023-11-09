@@ -5,68 +5,71 @@
 // Implementar una estructura de tipo cola circular
 #include <iostream>
 #include <cstdlib>
-#include <string.h>
+#include <cstring>
 //#include <cstring>
 using namespace std;
-#define K 2
 
-// intente crear mi arreglo
-// con el siguiente struct.
-//
-//struct Cancion {
-//	int byDefault;
-//	string nombre;
-//};
-
+#define K 4
+#define B 70
 
 
 int FINAL = -1;
 int FRENTE = -1;
+char canciones[K][B];
 
-//void llenado(char *song);
+void llenado();
+void ultima(char songs[][B]);
+void siguiente(char songs[][B]);
+void anterior(char songs[][B]);
 
-void llenado(string songs[]);
-void ultima(string songs[]);
-void siguiente();
-void anterior();
-
-void aniadir_cancion(string songs[]);
-void mostrar_cola(string songs[]);
+void mostrar_cola(char songs[][B]);
 void pintar();
+
+
+void enlistar(char elemento[]) {
+	if(FRENTE==0 && FINAL==K-1 || FINAL+1==FRENTE) {
+		cout<<"LISTA LLENA. HORA DE DAR VUELTA"<<endl<<endl;
+	} else {
+		if(FRENTE == -1 && FINAL == -1) {
+			FRENTE++;
+			FINAL++;
+		} 
+		else if(FINAL == K-1) {
+			FINAL = 0;
+		}
+		else {
+			FINAL++;
+		}
+		strcpy(canciones[FINAL][0], elemento);
+	}
+}
 
 
 void opciones() {
 	cout<<"1. Mostrar ultima cancion"<<endl;
 	cout<<"2. Siguiente"<<endl;
 	cout<<"3. Anterior"<<endl;
-	cout<<"4. Aniadir una"<<endl;
-	cout<<"5. Mostrar todas"<<endl;
-	cout<<"6. Salir"<<endl;
+	cout<<"4. Mostrar todas"<<endl;
+	cout<<"10. Salir"<<endl;
 };
 
 
 
 // ----------------------------------------------------------------------------
 //
-//
-//	* hice el intento de ingresar strings, pero ese fue mi uncio problema.
-//	espero el resto de la logica este correcta.
-//	* intente realizarlo con string, structs o con char *variable.
-//
+//	* Hice mi mejor intento en implementarlo, pero mi uncio
+//	  problema fue el manejo de cadenas.
+//	  Espero el resto de la logica este correcta.
 //
 // ----------------------------------------------------------------------------
 
 
 
 main() {
-	string canciones[K];
 	int opcion=100;
 	cout<<"------ Registra tus canciones favoritas ------"<<endl<<endl;
 
-//	char *bb="c";
-//	llenado(bb);
-
-	llenado(canciones);
+	llenado();
 
 	while(1) {
 		opciones();
@@ -79,27 +82,22 @@ main() {
 			break;
 
 			case 2: {
-				siguiente();
+				siguiente(canciones);
 			}
 			break;
 
 			case 3: {
-				anterior();
+				anterior(canciones);
 			}
 			break;
 
 			case 4: {
-				aniadir_cancion(canciones);
-			}
-			break;
-
-			case 5: {
 				mostrar_cola(canciones);
 				pintar();
 			}
 			break;
 
-			case 6: {
+			case 10: {
 				exit(0);
 			}
 
@@ -110,16 +108,24 @@ main() {
 }
 
 
-void llenado(char *song) {
-	char src[40] = "lala";
-	//----------------------------------------
-	strcpy(song, src);
-	cout<<"------------"<<src;
-	//----------------------------------------
+void llenado(char songs[][B]) {
+	/*
+	strcpy(songs[0][], c1);
+	strcpy(songs[1][], c2);
+	strcpy(songs[2][], c3);
+	*/
+	const char* playlist[K] = {"Yellow - The Beatles", "Rock is life - The Doors", "Shine Diamond - Pink Floid"};
+
+	for(int i=0; i<3; i++) {
+		songs[i] = new char[strlen(playlist[i][0]) + 1];
+		strcpy(songs[i], playlist[i][0]);
+
+		enlistar(songs[i][0]);
+	}
 };
 
 
-void ultima(string songs[]) {
+void ultima(char songs[][B]) {
 	if(FRENTE==0 && FINAL==K-1 || FINAL+1==FRENTE) {
 		cout<<"COLA LLENA. HORA DE DAR VUELTA"<<endl<<endl;
 
@@ -128,13 +134,13 @@ void ultima(string songs[]) {
 			return;
 		} 
 		else if(FINAL == K-1) {
-			cout<<songs[FINAL];
+			cout<<songs[FINAL][0];
 		}
 	}
 }
 
 
-void siguiente() {
+void siguiente(char songs[][B]) {
 		if(FRENTE == -1 && FINAL == -1) {
 			FRENTE++;
 			cout<<songs[FINAL];
@@ -142,14 +148,14 @@ void siguiente() {
 		else if(FINAL == K-1) {
 			FINAL = 0;
 			cout<<"llegaste a la ultima cancion";
-			cout<<songs[FINAL];
+			cout<<songs[FINAL][0];
 		}
 
 	
 }
 
 
-void anterior() {
+void anterior(char songs[][B]) {
 	if(FRENTE==0 && FINAL==K-1 || FINAL+1==FRENTE) {
 
 		cout<<"LISTA LLENA. HORA DE DAR VUELTA"<<endl<<endl;
@@ -158,7 +164,7 @@ void anterior() {
 		if(FRENTE == -1 && FINAL == -1) {
 			FINAL++;
 			cout<<"estas en al primera cancion";
-			cout<<songs[FRENTE];
+			cout<<songs[FRENTE][0];
 		} 
 		else if(FINAL == K-1) {
 			FINAL = 0;
@@ -168,7 +174,7 @@ void anterior() {
 }
 
 
-void mostrar_cola(string songs[]) {
+void mostrar_cola(char songs[][B]) {
 	cout<<"--- COLA DE CANCIONES ---"<<endl;
 	cout<<endl<<"===================="<<endl;
 	cout<<"[";
@@ -193,48 +199,6 @@ void mostrar_cola(string songs[]) {
 	// ------
 	cout<<"]"<<endl;
 	cout<<"===================="<<endl<<endl;
-}
-
-
-void aniadir_cancion(string songs[]) {
-	string nueva;
-	if(FRENTE==0 && FINAL==K-1 || FINAL+1==FRENTE) {
-
-		cout<<"COLA LLENA. HORA DE DAR VUELTA"<<endl<<endl;
-
-	} else {
-		cout<<"Coloque una cancion en su COLA: ";
-
-		//getline(cin, nueva);
-		//cin.ignore();
-
-		// -----------
-		if(FRENTE == -1 && FINAL == -1) {
-		  // ==========================
-		  // PRIMER ELEMENTO 
-			FRENTE++;
-			FINAL++;
-		  // ==========================
-		} 
-		else if(FINAL == K-1) {
-			FINAL = 0;
-		}
-		else {
-			FINAL++;
-		}
-// -------------------------------------------------------------		
-
-//		*hice el intento de ingresar strings, pero ese fue mi uncio problema.
-//		espero el resto de la logica este correcta
-
-
-		//strcpy("nueva", songs[FINAL]);
-		
-
-// -------------------------------------------------------------		
-		
-
-	}
 }
 
 

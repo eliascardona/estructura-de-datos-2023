@@ -1,14 +1,14 @@
-//incertar elementos de una lista
-//23/10/2023
-//elaboro: Todos
-
+// Elias Eduardo Cardona Rodríguez
+// Licenciatura en Informática 3-A
+// 02-NOV-2023
+// UNIDAD 3
+// Implementación de listas enlazadas simples.
 #include <iostream>
 using namespace std;
 
 //declaracion de la estructura de la lista 
 //estructura del NODO
-struct nodo
-{
+struct nodo{
 	int dato;
 	nodo *siguiente;
 };
@@ -156,7 +156,7 @@ bool esta_vacia(nodo *lista) {
 	nodo *actual;
 	actual = lista;
 	return actual == NULL;
-} 
+}
 
 //implementacion de la funcion para eliminar
 void eliminar(nodo *& lista, int elemento_eliminar) {
