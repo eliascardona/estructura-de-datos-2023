@@ -1,0 +1,11 @@
+1.- ¿Que es la herencia en POO en C++?
+	En POO, decimos que la herencia es la capacidad que tienen las clases para
+	legar información útil de clases que encapsulen (abstraigan) características simbólicas
+	que superan en jerarquía a la clase actual.
+	Por ejemplo la clase Persona, encapsula a todas las personas (a cualquier tipo de persona),
+	por lo que podemos concluir que todas las personas tienen nombre y edad; no importa si es Estudiante o Trabajador.
+
+
+2.- ¿Cual es su utilidad?
+	Ahorrar código y el tiempo de desarrollo de nuestras aplicaciones.
+	También le da un formato legible a nuestros sistemas.

@@ -1,7 +1,6 @@
 // Elias Eduardo Cardona Rodríguez
 // Lic. en Informatica 3A
-// Objetivo: Programar un clase que realice abstracción de un punto cartesiano en C++
-// Utilizar encapsulamiento y los métodos getters y setters
+// Objetivo: Programar un clase que realice herencia en POO en C++
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -9,18 +8,11 @@ using namespace std;
 // Declaración de la clase
 class Persona {
 	private: // Atributos
-		int edad;
 		string nombre;
+		int edad;
 	public: // Constructor y métodos
-		Persona(int, string);
-		void mostrar();
+		Persona(string, int);
 };
-
-
-Persona::Persona(int ed, string nom) {
-	edad = ed;
-	nombre = nom;
-}
 
 
 class Alumno : public Persona {
@@ -28,36 +20,47 @@ class Alumno : public Persona {
 		float calif;
 		string codigoAl;
 	public:
+		Alumno(float, string);
+};
+
+
+class Universitario : public Alumno {
+	private:
+		float semestre;
+	public:
 		Alumno(int ed, string nom, float cal, string cod);
-		void mostrarAl();
+};
+
+
+Persona::Persona(string nom, int ed) {
+	nombre = nom;
+	edad = ed;
 }
 
 
-Alumno::Alumno(int ed, string nom, float cal, string cod) : Persona(ed, nom) {
+Alumno::Alumno(string nom, int ed, float cal, string cod) : Persona(nom, ed) {
 	calif = cal;
 	codigoAl = cod;
 }
 
 
-void Persona::mostrar() {
-	cout << "nombre: " << nombre << endl;
-	cout << "edad: " << edad << endl;
+Universitario::Universitario(string nom, float cal, string cod, string sem) : Alumno(nom, cal, cod) {
+	semestre = sem;
 }
 
 
-void Alumno::mostrarAl() {
-	cout << "calificacion edad: " << calif << endl;
-	cout << "codigo del alumno: " << codigoAl << endl;
+void Universitario::saludar() {
+	cout << "Hola, mi nombre es " << nombre << " y estoy estudiando la universidad, en " << semestre << endl;
 }
 
 
 int main() {
 	// Crear un objeto de la clase usando el constructor
-	Alumno al_uno(21, "Carlos", 8.5, "Al-335130");
+	Universitario uni("Carlos", "4to");
 
 	// Invocamos los respectivos métodos de nuestra
 	// instancia de clase (objeto)
-	al_uno.mostrarAl();
+	uni.saludar();
 
 
 	cout<<endl;

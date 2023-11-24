@@ -1,0 +1,2 @@
+Este es un ejemplo de archivo de texto en c++.
+Linea 2 ejemplo.
