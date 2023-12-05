@@ -1,7 +1,3 @@
-// Elias Eduardo Cardona Rodríguez
-// Lic. en Informatica 3A
-// Objetivo: Comenzar a realizar ejercicios básicos con ficheros en C++
-
 #include <iostream>
 #include <fstream>
 #include <string>

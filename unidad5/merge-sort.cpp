@@ -1,11 +1,10 @@
 // haciendo un programa en merge-sort
-
 #include <iostream>
 using namespace std;
-
 #define tam 10
 
-int main() {
+
+void merge() {
 	int arr[tam] = {2,2,2,2,2, 3,3,3,3,3};
 	int r1 = tam/2;
 	int aux1[r1];
@@ -30,6 +29,11 @@ int main() {
 	for(int b=r1; b<tam; b++)
 		cout<<aux2[b]<<"\t";
 	// ------------- recorrido dos -------------
+}
+
+
+int main() {
+
 
 
 
